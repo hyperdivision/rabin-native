@@ -1,0 +1,23 @@
+{
+  "name": "rabin-native",
+  "version": "0.0.0",
+  "description": "Native bindings for rabin-cdc",
+  "main": "index.js",
+  "dependencies": {
+    "napi-macros": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "fetch-rabin-cdc": "git submodule update --recursive --init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperdivision/rabin-native.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyperdivision/rabin-native/issues"
+  },
+  "homepage": "https://github.com/hyperdivision/rabin-native"
+}
