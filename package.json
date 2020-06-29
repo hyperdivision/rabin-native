@@ -4,6 +4,7 @@
   "description": "Native bindings for rabin-cdc",
   "main": "index.js",
   "dependencies": {
+    "nanoassert": "^2.0.0",
     "napi-macros": "^2.0.0",
     "node-gyp-build": "^4.1.0"
   },
