@@ -8,10 +8,16 @@ typedef struct {
 } rabin_native_t;
 
 NAPI_METHOD(rabin_native_init) {
-  NAPI_ARGV(1)
+  NAPI_ARGV(4)
   NAPI_ARGV_BUFFER_CAST(rabin_native_t *, self, 0)
+  NAPI_ARGV_UINT32(minsize, 1)
+  NAPI_ARGV_UINT32(maxsize, 2)
+  NAPI_ARGV_UINT32(bits, 3)
 
   rabin_init(&(self->hash));
+  self->hash.minsize = (size_t) minsize;
+  self->hash.maxsize = (size_t) maxsize;
+  self->hash.mask = (1 << (uint8_t) (bits & 0xff)) - 1;
 
   return NULL;
 }
