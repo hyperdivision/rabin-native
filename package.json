@@ -1,6 +1,6 @@
 {
   "name": "rabin-native",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Native bindings for rabin-cdc",
   "main": "index.js",
   "dependencies": {
