@@ -3,21 +3,23 @@
 #include "deps/rabin-cdc/rabin.h"
 
 typedef struct {
-  uint32_t chunk_lengths[1024];
+  uint32_t *chunk_lengths;
   struct rabin_t hash;
 } rabin_native_t;
 
 NAPI_METHOD(rabin_native_init) {
-  NAPI_ARGV(4)
+  NAPI_ARGV(5)
   NAPI_ARGV_BUFFER_CAST(rabin_native_t *, self, 0)
   NAPI_ARGV_UINT32(minsize, 1)
   NAPI_ARGV_UINT32(maxsize, 2)
   NAPI_ARGV_UINT32(bits, 3)
+  NAPI_ARGV_BUFFER(chunk_lengths, 4)
 
   rabin_init(&(self->hash));
   self->hash.minsize = (size_t) minsize;
   self->hash.maxsize = (size_t) maxsize;
   self->hash.mask = (1 << (uint8_t) (bits & 0xff)) - 1;
+  self->chunk_lengths = (uint32_t *) chunk_lengths;
 
   return NULL;
 }
@@ -64,4 +66,5 @@ NAPI_INIT() {
   NAPI_EXPORT_SIZEOF(rabin_native_t)
   NAPI_EXPORT_FUNCTION(rabin_native_init)
   NAPI_EXPORT_FUNCTION(rabin_native_next_chunk)
+  NAPI_EXPORT_FUNCTION(rabin_native_finalize)
 }
