@@ -8,10 +8,13 @@
     "napi-macros": "^2.0.0",
     "node-gyp-build": "^4.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prebuildify": "^4.0.0"
+  },
   "scripts": {
     "fetch-rabin-cdc": "git submodule update --recursive --init",
-    "build": "node-gyp-build"
+    "install": "node-gyp-build",
+    "prebuild": "prebuildify --napi"
   },
   "repository": {
     "type": "git",
